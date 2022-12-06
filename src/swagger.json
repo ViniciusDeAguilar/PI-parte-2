@@ -1,0 +1,469 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Gerenciador de fichas",
+        "description": "API Rest para o gerenciamento de fichas de rpg",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "paths": {
+        "/fichas/": {
+            "get": {
+                "descrption": "Fichas dos Jogadores",
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/components/schemas/fichas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        },
+        "/fichas/listarId/{id}": {
+            "get": {
+                "descrption": "Localiza ficha pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "app/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/fichas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/fichas": {
+            "post": {
+                "descrption": "Cria uma ficha nova",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/fichas"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Operação bem sucedida",
+                        "content": {}
+                    },
+                    "404": {
+                        "description":"Ficha não pode ser encontrada",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/fichas/{id}": {
+            "put": {
+                "descrption": "Altera uma ficha pelo id",
+              "parameters": [{
+                  "name": "id",
+                  "in": "path",
+                  "required": true
+              }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/fichas"
+                            }
+                        }
+                    }
+                    
+                },
+                "responses": {
+                    "204": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                        }
+                    }
+                }
+            }
+        },
+        "/fichas/delete/{id}": {
+            "delete": {
+                "description": "Deleta uma ficha pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Ficha deletada",
+                        "404": {
+                                "description": "Ficha não pode ser encontrada"
+                            }
+                    }
+                }
+            }
+        },
+
+
+        "/jogadores/": {
+            "get": {
+                "descrption": "Dados dos Jogadores",
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/components/schemas/jogadores"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/jogadores/listarId/{id}": {
+            "get": {
+                "descrption": "Localiza jogador pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "app/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/jogadores"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/jogadores": {
+            "post": {
+                "descrption": "Cria um jogador novo",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/jogadores"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Operação bem sucedida",
+                        "content": {}
+                    },
+                    "404": {
+                        "description":"Jogador não pode ser encontrado",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/jogadores/{id}": {
+            "put": {
+                "descrption": "Altera um jogador pelo id",
+              "parameters": [{
+                  "name": "id",
+                  "in": "path",
+                  "required": true
+              }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/jogadores"
+                            }
+                        }
+                    }
+                    
+                },
+                "responses": {
+                    "204": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                        }
+                    }
+                }
+            }
+        },
+        "/jogadores/delete/{id}": {
+            "delete": {
+                "description": "Deleta um jogador pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Jogador deletado",
+                        "404": {
+                                "description": "Jogador não pode ser encontrado"
+                            }
+                    }
+                }
+            }
+        },
+
+
+        "/npcs/": {
+            "get": {
+                "descrption": "Fichas dos NPCS",
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                "type": "array",
+                                "items":{
+                                    "$ref": "#/components/schemas/npcs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/npcs/listarId/{id}": {
+            "get": {
+                "descrption": "Localiza npc pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                            "app/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/npcs"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/npcs": {
+            "post": {
+                "descrption": "Cria um novo NPC",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/npcs"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Operação bem sucedida",
+                        "content": {}
+                    },
+                    "404": {
+                        "description":"NPC não pode ser encontrado",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/npcs/{id}": {
+            "put": {
+                "descrption": "Altera um NPC pelo id",
+              "parameters": [{
+                  "name": "id",
+                  "in": "path",
+                  "required": true
+              }],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/npcs"
+                            }
+                        }
+                    }
+                    
+                },
+                "responses": {
+                    "204": {
+                        "description": "Operação bem sucedida",
+                        "content": {
+                        }
+                    }
+                }
+            }
+        },
+        "/npcs/delete/{id}": {
+            "delete": {
+                "description": "Deleta um NPC pelo id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NPC deletado",
+                        "404": {
+                                "description": "NPC não pode ser encontrado"
+                            }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "fichas": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "nomeJogador": {
+                        "type": "string",
+                        "example": "Vinicius Aguilar"
+                    },
+                    "nomePersonagem": {
+                        "type": "string",
+                        "example": "Kruk, o quebra crânios"
+                    },
+                    "raca": {
+                        "type": "string",
+                        "example": "Orc"
+                    },
+                    "classe": {
+                        "type": "string",
+                        "example": "Bárbaro"
+                    },
+                    "forca": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "contituicao": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "destreza": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "inteligencia": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "carisma": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "sabedoria": {
+                        "type": "number",
+                        "example": 15
+                    },
+                    "jogando": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            },
+            "jogadores": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "nome": {
+                        "type": "string",
+                        "example": "Vinicius Aguilar"
+                    },
+                    "telefone": {
+                        "type": "string",
+                        "example": "(61) 96161-6161"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "viniciusaguilar@gmail.com"
+                    }
+                }
+            },
+
+            "npcs": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "nome": {
+                        "type": "string",
+                        "example": "Joaquim, o mercador"
+                    },
+                    "raca": {
+                        "type": "string",
+                        "example": "Gnomo"
+                    },
+                    "classe": {
+                        "type": "string",
+                        "example": "Ladino"
+                    },
+                    "vivo": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            }
+        }
+    }
+}
