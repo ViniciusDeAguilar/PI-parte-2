@@ -41,7 +41,7 @@ const fichaSchema = mongoose.Schema({
         min: [0, 'Um atributo não pode ser menor que 0!'],
         required: [ true, 'Um atributo não pode ser nulo']
     },
-    dextreza: {
+    destreza: {
         type: Number,
         min: [0, 'Um atributo não pode ser menor que 0!'],
         required: [ true, 'Um atributo não pode ser nulo']
